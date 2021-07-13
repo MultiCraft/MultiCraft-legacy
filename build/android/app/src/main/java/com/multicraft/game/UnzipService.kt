@@ -31,7 +31,6 @@ import com.multicraft.game.helpers.Utilities.copyInputStreamToFile
 import net.lingala.zip4j.ZipFile
 import net.lingala.zip4j.io.inputstream.ZipInputStream
 import net.lingala.zip4j.model.LocalFileHeader
-import java.io.EOFException
 import java.io.File
 import java.io.FileInputStream
 import java.io.IOException
@@ -42,6 +41,7 @@ class UnzipService : JobIntentService() {
 	private var mNotifyManager: NotificationManager? = null
 	private lateinit var failureMessage: String
 	private var isSuccess = true
+
 	override fun onHandleWork(intent: Intent) {
 		createNotification()
 		unzip(intent)
@@ -91,32 +91,27 @@ class UnzipService : JobIntentService() {
 				intent?.getStringArrayListExtra(EXTRA_KEY_IN_FILE)
 					?: throw NullPointerException("No data received")
 			val cache = cacheDir.toString()
+			val files = filesDir.toString()
 			var per = 0
 			val size = getSummarySize(zips, cache)
 			for (zip in zips) {
 				val zipFile = File(cache, zip)
 				var localFileHeader: LocalFileHeader?
-				try {
-					FileInputStream(zipFile).use { fileInputStream ->
-						ZipInputStream(
-							fileInputStream
-						).use { zipInputStream ->
-							val location = filesDir.toString()
-							while (zipInputStream.nextEntry.also { localFileHeader = it } != null) {
-								if (localFileHeader == null) continue
-								val fileName = localFileHeader!!.fileName
-								if (localFileHeader!!.isDirectory) {
-									++per
-									File(location, fileName).mkdirs()
-								} else {
-									val extractedFile = File(location, fileName)
-									extractedFile.copyInputStreamToFile(zipInputStream)
-									publishProgress(100 * ++per / size)
-								}
-							}
+				FileInputStream(zipFile).use { fileInputStream ->
+					ZipInputStream(
+						fileInputStream
+					).use { zipInputStream ->
+						while (zipInputStream.nextEntry.also { localFileHeader = it } != null) {
+							if (localFileHeader == null) continue
+							val extracted = File(files, localFileHeader!!.fileName)
+							if (localFileHeader!!.isDirectory)
+								extracted.mkdirs()
+							else
+								extracted.copyInputStreamToFile(zipInputStream)
+							++per
+							publishProgress(100 * per / size)
 						}
 					}
-				} catch (e: EOFException) {
 				}
 			}
 		} catch (e: IOException) {
