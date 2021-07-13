@@ -35,7 +35,6 @@ import static com.multicraft.game.helpers.PreferencesHelper.TAG_BUILD_NUMBER;
 import static com.multicraft.game.helpers.PreferencesHelper.TAG_LAUNCH_TIMES;
 import static com.multicraft.game.helpers.Utilities.addShortcut;
 import static com.multicraft.game.helpers.Utilities.copyInputStreamToFile;
-import static com.multicraft.game.helpers.Utilities.createAndWriteToFile;
 import static com.multicraft.game.helpers.Utilities.deleteFiles;
 import static com.multicraft.game.helpers.Utilities.finishApp;
 import static com.multicraft.game.helpers.Utilities.getIcon;
@@ -122,7 +121,6 @@ public class MainActivity extends AppCompatActivity {
 			externalStorage = getExternalFilesDir(null);
 			if (filesDir == null || cacheDir == null || externalStorage == null)
 				throw new IOException(getString(R.string.space_error));
-			createAndWriteToFile(filesDir);
 		} catch (IOException e) {
 			isException = true;
 			String msg = getString(R.string.restart, e.getLocalizedMessage());
