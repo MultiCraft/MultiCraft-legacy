@@ -28,7 +28,9 @@ import static com.multicraft.game.helpers.Utilities.getTotalMem;
 import static com.multicraft.game.helpers.Utilities.makeFullScreen;
 
 import android.app.NativeActivity;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -179,5 +181,10 @@ public class GameActivity extends NativeActivity {
 	}
 
 	public void notifyExitGame() {
+	}
+
+	public void openURI(String uri) {
+		Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+		startActivity(browserIntent);
 	}
 }

@@ -105,6 +105,7 @@ return {
 			"Copyright (C) 2014-2021 MultiCraft Development Team\n" ..
 			"Licence: LGPLv3.0+ and CC-BY-SA 4.0\n" ..
 			"Home page: http://multicraft.world]" ..
+			"button[4,1;2,0.5;homepage;Privacy Policy]" ..
 			"tablecolumns[color;text]" ..
 			"tableoptions[background=#999999;highlight=#00000000;border=true]" ..
 			"table[0,1.6;11.8,3.8;list_credits;" ..
@@ -119,5 +120,10 @@ return {
 			"#FFFF00," .. fgettext("Previous Contributors") .. ",," ..
 			buildCreditList(previous_contributors) .. "," ..
 			";1]"
-	end
+	end,
+	cbf_button_handler = function(this, fields, name, tabdata)
+		if fields.homepage then
+			core.open_url("http://multicraft.world/privacy")
+		end
+	end,
 }

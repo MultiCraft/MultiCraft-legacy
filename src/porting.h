@@ -353,6 +353,18 @@ bool secure_rand_fill_buf(void *buf, size_t len);
 
 // This attaches to the parents process console, or creates a new one if it doesnt exist.
 void attachOrCreateConsole(void);
+
+
+/**
+ * Opens URL in default web browser
+ *
+ * Must begin with http:// or https://, and not contain any new lines
+ *
+ * @param url The URL
+ * @return true on success, false on failure
+ */
+	bool open_url(const std::string &url);
+
 } // namespace porting
 
 #ifdef __ANDROID__
