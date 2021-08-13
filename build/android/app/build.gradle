@@ -47,6 +47,10 @@ android {
 		targetCompatibility JavaVersion.VERSION_1_8
 	}
 
+	buildFeatures {
+		viewBinding true
+	}
+
 	// for multiple APKs
 	splits {
 		abi {
@@ -62,8 +66,8 @@ dependencies {
 	implementation project(':native')
 
 	/* Third-party libraries */
-	implementation 'androidx.appcompat:appcompat:1.3.0'
-	implementation 'androidx.appcompat:appcompat-resources:1.3.0'
+	implementation 'androidx.appcompat:appcompat:1.3.1'
+	implementation 'androidx.appcompat:appcompat-resources:1.3.1'
 	implementation 'com.google.android.material:material:1.4.0'
 	implementation 'io.reactivex.rxjava3:rxjava:3.0.13'
 	implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
