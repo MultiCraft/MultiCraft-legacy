@@ -3,7 +3,7 @@
 . sdk.sh
 
 [ ! -d irrlicht-src ] && \
-	git clone -b ogl-es --depth 1 https://github.com/MoNTE48/Irrlicht irrlicht-src
+	git clone -b ogl-es-monte48 --recurse-submodules --depth 1 https://github.com/kakashidinho/irrlicht irrlicht-src
 
 cd irrlicht-src/source/Irrlicht
 xcodebuild build ARCHS=arm64 \

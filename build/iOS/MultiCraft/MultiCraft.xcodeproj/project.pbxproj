@@ -35,6 +35,8 @@
 		4B35A9F41EEE017000274961 /* scripting_client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B35A9F21EEE017000274961 /* scripting_client.cpp */; };
 		4B35A9F71EEE018D00274961 /* scripting_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B35A9F51EEE018D00274961 /* scripting_server.cpp */; };
 		842A808C2339174C00A89418 /* ads.mm in Sources */ = {isa = PBXBuildFile; fileRef = 842A808B2339174C00A89418 /* ads.mm */; };
+		843391652562FD60001CCD8A /* MetalANGLE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843391642562FD60001CCD8A /* MetalANGLE.framework */; };
+		843391662562FD60001CCD8A /* MetalANGLE.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 843391642562FD60001CCD8A /* MetalANGLE.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8465A76522A7D4500095B7CA /* libintl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8465A76422A7D4500095B7CA /* libintl.cpp */; };
 		8473ED8125C055F80053293B /* static_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8473ED7F25C055F80053293B /* static_text.cpp */; };
 		8473ED8425C0562C0053293B /* lutf8lib.c in Sources */ = {isa = PBXBuildFile; fileRef = 8473ED8225C0562C0053293B /* lutf8lib.c */; };
@@ -230,7 +232,6 @@
 		F8E6C7C21DCA428800F64426 /* timetaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8E6C7B51DCA428800F64426 /* timetaker.cpp */; };
 		F8E6C7C51DCA42F300F64426 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8E6C7C41DCA42F300F64426 /* QuartzCore.framework */; };
 		F8E6C7C71DCA42FA00F64426 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8E6C7C61DCA42FA00F64426 /* UIKit.framework */; };
-		F8E6C7C91DCA430300F64426 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8E6C7C81DCA430300F64426 /* OpenGLES.framework */; };
 		F8E6C7CD1DCA431B00F64426 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8E6C7CC1DCA431B00F64426 /* Foundation.framework */; };
 		F8E6C7D51DCA476800F64426 /* libIrrlicht.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8E6C7D41DCA476800F64426 /* libIrrlicht.a */; };
 		F8E6C7D71DCA477600F64426 /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8E6C7D61DCA477600F64426 /* libfreetype.a */; };
@@ -244,6 +245,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				843391662562FD60001CCD8A /* MetalANGLE.framework in Embed Frameworks */,
 				84A4380525535BA5002571D4 /* soft_oal.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -307,6 +309,7 @@
 		840E2F9E233410F90088E7F7 /* SDVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDVersion.h; path = SDVersion/SDVersion.h; sourceTree = "<group>"; };
 		842A808A2339174B00A89418 /* ads.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ads.h; path = Ads/ads.h; sourceTree = "<group>"; };
 		842A808B2339174C00A89418 /* ads.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ads.mm; path = Ads/ads.mm; sourceTree = "<group>"; };
+		843391642562FD60001CCD8A /* MetalANGLE.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalANGLE.framework; path = ../deps/MetalANGLE.framework; sourceTree = "<group>"; };
 		8465A76122A7D4500095B7CA /* MessageCatalog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = MessageCatalog.hpp; path = ../../../../lib/intl/MessageCatalog.hpp; sourceTree = "<group>"; };
 		8465A76222A7D4500095B7CA /* libintl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libintl.h; path = ../../../../lib/intl/libintl.h; sourceTree = "<group>"; };
 		8465A76322A7D4500095B7CA /* Util.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Util.hpp; path = ../../../../lib/intl/Util.hpp; sourceTree = "<group>"; };
@@ -713,7 +716,6 @@
 		F8E6C7B61DCA428800F64426 /* timetaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = timetaker.h; path = ../../../../src/util/timetaker.h; sourceTree = "<group>"; };
 		F8E6C7C41DCA42F300F64426 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F8E6C7C61DCA42FA00F64426 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		F8E6C7C81DCA430300F64426 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		F8E6C7CC1DCA431B00F64426 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F8E6C7CE1DCA432200F64426 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		F8E6C7D41DCA476800F64426 /* libIrrlicht.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libIrrlicht.a; path = ../deps/irrlicht/libIrrlicht.a; sourceTree = "<group>"; };
@@ -731,8 +733,8 @@
 				84FE40E224439C2F008E29DB /* libcurl.a in Frameworks */,
 				F8E6C7D71DCA477600F64426 /* libfreetype.a in Frameworks */,
 				F8E6C7D51DCA476800F64426 /* libIrrlicht.a in Frameworks */,
+				843391652562FD60001CCD8A /* MetalANGLE.framework in Frameworks */,
 				84C32A3724AF7A4500445E92 /* Nantes in Frameworks */,
-				F8E6C7C91DCA430300F64426 /* OpenGLES.framework in Frameworks */,
 				8E0FFE3234B35EC9603EC82A /* Pods_MultiCraft.framework in Frameworks */,
 				F8E6C7C51DCA42F300F64426 /* QuartzCore.framework in Frameworks */,
 				84A4380425535BA5002571D4 /* soft_oal.framework in Frameworks */,
@@ -1385,7 +1387,7 @@
 				F8E6C7CE1DCA432200F64426 /* CoreMotion.framework */,
 				F8E6C7CC1DCA431B00F64426 /* Foundation.framework */,
 				84A4380325535BA5002571D4 /* soft_oal.framework */,
-				F8E6C7C81DCA430300F64426 /* OpenGLES.framework */,
+				843391642562FD60001CCD8A /* MetalANGLE.framework */,
 				F8E6C7C61DCA42FA00F64426 /* UIKit.framework */,
 				F8E6C7C41DCA42F300F64426 /* QuartzCore.framework */,
 				73B0001862274A8FCC7614F0 /* Pods_MultiCraft.framework */,

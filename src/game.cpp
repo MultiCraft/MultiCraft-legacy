@@ -4461,12 +4461,11 @@ void Game::updateGui(const RunStats &stats, f32 dtime, const CameraOrientation &
 	v2u32 screensize = driver->getScreenSize();
 	LocalPlayer *player = client->getEnv().getLocalPlayer();
 	v3f player_position = player->getPosition();
+	u16 fps = 1.0 / stats.dtime_jitter.avg;
 
 	if (flags.show_debug) {
 		static float drawtime_avg = 0;
 		drawtime_avg = drawtime_avg * 0.95 + stats.drawtime * 0.05;
-
-		u16 fps = 1.0 / stats.dtime_jitter.avg;
 
 		std::ostringstream os(std::ios_base::binary);
 		os << std::fixed
@@ -4489,7 +4488,8 @@ void Game::updateGui(const RunStats &stats, f32 dtime, const CameraOrientation &
 		os << std::setprecision(1) << std::fixed
 		   << "X: " << (player_position.X / BS)
 		   << ", Y: " << (player_position.Y / BS)
-		   << ", Z: " << (player_position.Z / BS);
+		   << ", Z: " << (player_position.Z / BS)
+		   << ", FPS: " << fps;
 		guitext->setText(utf8_to_wide(os.str()).c_str());
 		guitext->setVisible(true);
 	} else {
