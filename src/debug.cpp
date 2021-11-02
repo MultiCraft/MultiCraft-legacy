@@ -87,7 +87,6 @@ void fatal_error_fn(const char *msg, const char *file,
 #else
 	abort();
 #endif
-	throw std::runtime_error(errorString);
 }
 
 /*
