@@ -30,6 +30,7 @@
 
 #ifndef __IRR_USTRING_H_INCLUDED__
 #define __IRR_USTRING_H_INCLUDED__
+#define _IRR_DEBUG_BREAK_IF IRR_DEBUG_BREAK_IF
 
 #if (__cplusplus > 199711L) || (defined(_MSC_VER) && _MSC_VER >= 1600) || defined(__GXX_EXPERIMENTAL_CXX0X__)
 #	define USTRING_CPP0X
@@ -1222,7 +1223,7 @@ public:
 	//! Direct access operator
 	access operator [](const u32 index)
 	{
-		IRR_DEBUG_BREAK_IF(index>=size()) // bad index
+		_IRR_DEBUG_BREAK_IF(index>=size()) // bad index
 		iterator iter(*this, index);
 		return iter.operator*();
 	}
@@ -1231,7 +1232,7 @@ public:
 	//! Direct access operator
 	const access operator [](const u32 index) const
 	{
-		IRR_DEBUG_BREAK_IF(index>=size()) // bad index
+		_IRR_DEBUG_BREAK_IF(index>=size()) // bad index
 		const_iterator iter(*this, index);
 		return iter.operator*();
 	}
@@ -2437,7 +2438,7 @@ public:
 	//! \return A reference to our current string.
 	ustring16<TAlloc>& erase(u32 index)
 	{
-		IRR_DEBUG_BREAK_IF(index>used) // access violation
+		_IRR_DEBUG_BREAK_IF(index>used) // access violation
 
 		iterator i(*this, index);
 

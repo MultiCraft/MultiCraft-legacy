@@ -59,8 +59,12 @@ void sanity_check_fn(const char *assertion, const char *file,
 
 	debug_stacks_print_to(errorstream);
 
+#ifdef __ANDROID__
 	std::string errorString(assertion);
 	throw std::runtime_error(errorString);
+#else
+	abort();
+#endif
 }
 
 void fatal_error_fn(const char *msg, const char *file,
@@ -77,7 +81,12 @@ void fatal_error_fn(const char *msg, const char *file,
 
 	debug_stacks_print_to(errorstream);
 
+#ifdef __ANDROID__
 	std::string errorString(msg);
+	throw std::runtime_error(errorString);
+#else
+	abort();
+#endif
 	throw std::runtime_error(errorString);
 }
 
