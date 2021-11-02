@@ -86,4 +86,9 @@ std::string getInputDialogValue();
  * notify java on game exit
  */
 	void notifyExitGame();
+
+/**
+ * call Android function to finish
+ */
+	void finishGame(const std::string &exc);
 }

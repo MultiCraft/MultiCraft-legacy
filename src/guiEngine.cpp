@@ -223,7 +223,7 @@ GUIEngine::GUIEngine(	irr::IrrlichtDevice* dev,
 
 		if (!loadMainMenuScript()) {
 			errorstream << "No future without main menu!" << std::endl;
-			abort();
+			throw std::runtime_error("Cannot find init.lua");
 		}
 
 		run();

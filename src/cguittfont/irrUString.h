@@ -1222,7 +1222,7 @@ public:
 	//! Direct access operator
 	access operator [](const u32 index)
 	{
-		_IRR_DEBUG_BREAK_IF(index>=size()) // bad index
+		IRR_DEBUG_BREAK_IF(index>=size()) // bad index
 		iterator iter(*this, index);
 		return iter.operator*();
 	}
@@ -1231,7 +1231,7 @@ public:
 	//! Direct access operator
 	const access operator [](const u32 index) const
 	{
-		_IRR_DEBUG_BREAK_IF(index>=size()) // bad index
+		IRR_DEBUG_BREAK_IF(index>=size()) // bad index
 		const_iterator iter(*this, index);
 		return iter.operator*();
 	}
@@ -2437,7 +2437,7 @@ public:
 	//! \return A reference to our current string.
 	ustring16<TAlloc>& erase(u32 index)
 	{
-		_IRR_DEBUG_BREAK_IF(index>used) // access violation
+		IRR_DEBUG_BREAK_IF(index>used) // access violation
 
 		iterator i(*this, index);
 

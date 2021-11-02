@@ -49,10 +49,10 @@ void android_main(android_app *app)
 		free(argv[0]);
 	} catch (std::exception &e) {
 		errorstream << "Uncaught exception in main thread: " << e.what() << std::endl;
-		retval = -1;
+		porting::finishGame(e.what());
 	} catch (...) {
 		errorstream << "Uncaught exception in main thread!" << std::endl;
-		retval = -1;
+		porting::finishGame("Unknown error");
 	}
 
 	porting::cleanupAndroid();
@@ -339,4 +339,22 @@ float getDisplayDensity()
 v2u32 getDisplaySize() {
 	return porting::getWindowSize();
 }
+
+void finishGame(const std::string &exc) {
+	if (jnienv->ExceptionCheck()) {
+		jnienv->ExceptionClear();
+	}
+	jmethodID finishMe;
+	try {
+		finishMe = jnienv->GetMethodID(nativeActivity, "finishGame", "(Ljava/lang/String;)V");
+	} catch (...) {
+		exit(-1);
+	}
+
+	FATAL_ERROR_IF(finishMe == nullptr,
+	               "porting::finishMe unable to find java finishGame method");
+	jstring jexc = jnienv->NewStringUTF(exc.c_str());
+	jnienv->CallVoidMethod(app_global->activity->clazz, finishMe, jexc);
+}
+
 }
