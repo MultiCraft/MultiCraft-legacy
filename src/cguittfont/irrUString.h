@@ -30,7 +30,6 @@
 
 #ifndef __IRR_USTRING_H_INCLUDED__
 #define __IRR_USTRING_H_INCLUDED__
-#define _IRR_DEBUG_BREAK_IF IRR_DEBUG_BREAK_IF
 
 #if (__cplusplus > 199711L) || (defined(_MSC_VER) && _MSC_VER >= 1600) || defined(__GXX_EXPERIMENTAL_CXX0X__)
 #	define USTRING_CPP0X

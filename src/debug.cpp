@@ -58,11 +58,11 @@ void sanity_check_fn(const char *assertion, const char *file,
 		<< ": An engine assumption '" << assertion << "' failed." << std::endl;
 
 	debug_stacks_print_to(errorstream);
-	std::string capture = "An engine assumption failed: \"" + std::string(assertion) +
-	                      "\" in file: " + std::string(file) + ":" + std::to_string(line) +
-	                      " (" + std::string(function) + ")";
 
 #ifdef __ANDROID__
+	std::string capture = "An engine assumption failed: \"" + std::string(assertion) +
+		"\" in file: " + std::string(file) + ":" + std::to_string(line) +
+		" (" + std::string(function) + ")";
 	throw std::runtime_error(capture);
 #else
 	abort();
@@ -82,11 +82,11 @@ void fatal_error_fn(const char *msg, const char *file,
 		<< ": A fatal error occurred: " << msg << std::endl;
 
 	debug_stacks_print_to(errorstream);
-	std::string capture = "A fatal error occurred: \"" + std::string(msg) +
-	                      "\" in file: " + std::string(file) + ":" + std::to_string(line) +
-	                      " (" + std::string(function) + ")";
 
 #ifdef __ANDROID__
+	std::string capture = "A fatal error occurred: \"" + std::string(msg) +
+		"\" in file: " + std::string(file) + ":" + std::to_string(line) +
+		" (" + std::string(function) + ")";
 	throw std::runtime_error(capture);
 #else
 	abort();
@@ -366,4 +366,3 @@ void debug_set_exception_handler()
 	SetUnhandledExceptionFilter(Win32ExceptionHandler);
 #endif
 }
-
