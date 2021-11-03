@@ -474,7 +474,8 @@ void TouchScreenGUI::handleReleaseEvent(size_t evt_id)
 			m_joystick_status[i] = false;
 		applyJoystickStatus();
 
-		m_joystick_btn_off->guibutton->setVisible(true);
+		if (m_visible)
+			m_joystick_btn_off->guibutton->setVisible(true);
 		m_joystick_btn_bg->guibutton->setVisible(false);
 		m_joystick_btn_center->guibutton->setVisible(false);
 	} else {

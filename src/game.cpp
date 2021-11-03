@@ -3191,7 +3191,11 @@ inline void Game::step(f32 *dtime)
 #if defined(__ANDROID__) || defined(__IOS__)
 	if (g_menumgr.pausesGame()) {
 		runData.pause_game_timer += *dtime;
-		if (runData.pause_game_timer > 120.0f) {
+		float disconnect_time = 180.0f;
+#ifdef __IOS__
+		disconnect_time = simple_singleplayer_mode ? 60.0f : 120.0f;
+#endif
+		if (runData.pause_game_timer > disconnect_time) {
 			g_gamecallback->disconnect();
 			return;
 		}
@@ -4987,7 +4991,7 @@ void the_game(bool *kill,
 }
 
 #if defined(__ANDROID__) || defined(__IOS__)
-void external_pause_game()
+extern "C" void external_pause_game()
 {
 	if (!g_game)
 		return;
@@ -4996,7 +5000,7 @@ void external_pause_game()
 #endif
 
 #ifdef __IOS__
-void external_statustext(const char *text, float duration)
+extern "C" void external_statustext(const char *text, float duration)
 {
 	if (!g_game)
 		return;

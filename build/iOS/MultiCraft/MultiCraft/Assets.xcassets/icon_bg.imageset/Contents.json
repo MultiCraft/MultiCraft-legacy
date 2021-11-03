@@ -11,9 +11,9 @@
           "top" : 0
         },
         "center" : {
-          "height" : 64,
+          "height" : 128,
           "mode" : "tile",
-          "width" : 64
+          "width" : 128
         },
         "mode" : "9-part"
       }

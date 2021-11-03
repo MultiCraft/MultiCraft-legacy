@@ -71,6 +71,8 @@
 #include "irrString.h"
 #include "path.h"
 
+#define _IRR_DEBUG_BREAK_IF IRR_DEBUG_BREAK_IF
+
 //! UTF-16 surrogate start values.
 static const irr::u16 UTF16_HI_SURROGATE = 0xD800;
 static const irr::u16 UTF16_LO_SURROGATE = 0xDC00;

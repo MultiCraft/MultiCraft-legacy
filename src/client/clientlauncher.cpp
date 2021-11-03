@@ -605,9 +605,6 @@ bool ClientLauncher::create_engine_device()
 #ifdef __IOS__
 		CIrrDeviceiOS* dev = (CIrrDeviceiOS*) device;
 		porting::setViewController(dev->getViewController());
-#ifdef ADS
-		ads_startup(dev->getViewController());
-#endif
 #endif
 	}
 

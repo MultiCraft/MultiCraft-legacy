@@ -34,7 +34,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #endif
 
 extern int main(int argc, char *argv[]);
-extern void external_pause_game();
+extern "C" void external_pause_game();
 
 void android_main(android_app *app)
 {

@@ -100,7 +100,6 @@ void *ServerThread::run()
 
 			m_server->Receive();
 
-		} catch (con::NoIncomingDataException &e) {
 		} catch (con::PeerNotFoundException &e) {
 			infostream<<"Server: PeerNotFoundException"<<std::endl;
 		} catch (ClientNotFoundException &e) {
@@ -1070,6 +1069,9 @@ void Server::Receive()
 	}
 	catch(con::PeerNotFoundException &e) {
 		// Do nothing
+	}
+	catch(con::NoIncomingDataException &e) {
+		return;
 	}
 }
 

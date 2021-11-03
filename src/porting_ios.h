@@ -1,7 +1,7 @@
 /*
 MultiCraft
 
-Copyright (C) 2014-2020 Maksim Gamarnik [MoNTE48] MoNTE48@mail.ua
+Copyright (C) 2014-2021 Maksim Gamarnik [MoNTE48] MoNTE48@mail.ua
 Copyright (C) 2016-2019 sfan5
 
 This program is free software; you can redistribute it and/or modify

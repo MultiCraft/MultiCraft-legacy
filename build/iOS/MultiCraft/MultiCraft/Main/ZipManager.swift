@@ -1,6 +1,6 @@
 import Foundation
-import SSZipArchive
-import Bugsnag
+import ZipArchive
+import Sentry
 
 private enum Constants {
 	static let percentProgressIndex: Int = 0
@@ -54,7 +54,7 @@ final class VersionManager {
 		do {
 			try content.write(toFile: filename, atomically: false, encoding: .ascii)
 		} catch {
-			Bugsnag.notifyError(error)
+			SentrySDK.capture(error: error)
 		}
 	}
 }
@@ -99,10 +99,9 @@ private extension ZipManager {
 
 		SSZipArchive.unzipFile(atPath: path, toDestination: destination, overwrite: true, password: ZIPPWD, progressHandler: { (file, zipInfo, progress, total) in
 			block(progress * 100 / total)
-
 		}) { (path, success, error) in
 			if let error = error {
-				Bugsnag.notifyError(error)
+				SentrySDK.capture(error: error)
 				errorBlock(error)
 			} else {
 				block(100)

@@ -40,6 +40,10 @@ typedef NS_ENUM(NSInteger, DeviceVersion){
 	iPhone12              = 123,
 	iPhone12Pro           = 124,
 	iPhone12ProMax        = 125,
+	iPhone13Mini          = 122,
+	iPhone13              = 123,
+	iPhone13Pro           = 124,
+	iPhone13ProMax        = 125,
 
 	// iPad
 	iPadAir               = 205,
@@ -56,6 +60,7 @@ typedef NS_ENUM(NSInteger, DeviceVersion){
 	iPadPro11Inch         = 216,
 	iPadPro12Dot9Inch3Gen = 217,
 	iPadMini5             = 218,
+	iPadMini6             = 219,
 	iPadAir3              = 219,
 	iPad7                 = 220,
 	iPadPro11Inch2Gen     = 216,
@@ -114,6 +119,10 @@ typedef NS_ENUM(NSInteger, DeviceVersion){
 			@"iPhone13,2" : @(iPhone12),
 			@"iPhone13,3" : @(iPhone12Pro),
 			@"iPhone13,4" : @(iPhone12ProMax),
+			@"iPhone14,4" : @(iPhone13Mini),
+			@"iPhone14,5" : @(iPhone13),
+			@"iPhone14,2" : @(iPhone13Pro),
+			@"iPhone14,3" : @(iPhone13ProMax),
 
 			// iPad
 			@"iPad6,11" : @(iPad5),
@@ -145,6 +154,8 @@ typedef NS_ENUM(NSInteger, DeviceVersion){
 			@"iPad5,2"  : @(iPadMini4),
 			@"iPad11,1" : @(iPadMini5),
 			@"iPad11,2" : @(iPadMini5),
+			@"iPad14,1" : @(iPadMini6),
+			@"iPad14,2" : @(iPadMini6),
 
 			@"iPad6,3"  : @(iPadPro9Dot7Inch),
 			@"iPad6,4"  : @(iPadPro9Dot7Inch),
@@ -189,17 +200,18 @@ typedef NS_ENUM(NSInteger, DeviceVersion){
 
 #define SDVersion4and7Inch	(([SDVersion deviceVersion] == iPhone6) || ([SDVersion deviceVersion] == iPhone6S) || ([SDVersion deviceVersion] == iPhone7) || ([SDVersion deviceVersion] == iPhone8) || ([SDVersion deviceVersion] == iPhoneSE2Gen))
 
-#define SDVersion5and5Inch	(([SDVersion deviceVersion] == iPhone6Plus) || ([SDVersion deviceVersion] == iPhone6SPlus) || ([SDVersion deviceVersion] == iPhone7Plus) || ([SDVersion deviceVersion] == iPhone8Plus) | ([SDVersion deviceVersion] == iPhone12Mini))
+#define SDVersion5and5Inch	(([SDVersion deviceVersion] == iPhone6Plus) || ([SDVersion deviceVersion] == iPhone6SPlus) || ([SDVersion deviceVersion] == iPhone7Plus) || ([SDVersion deviceVersion] == iPhone8Plus) || ([SDVersion deviceVersion] == iPhone12Mini) || ([SDVersion deviceVersion] == iPhone13Mini))
 
 #define SDVersion5and8Inch	(([SDVersion deviceVersion] == iPhoneX) || ([SDVersion deviceVersion] == iPhoneXS) || ([SDVersion deviceVersion] == iPhone11Pro))
 
-#define SDVersion6and1Inch	(([SDVersion deviceVersion] == iPhoneXR) || ([SDVersion deviceVersion] == iPhone11) | ([SDVersion deviceVersion] == iPhone12) | ([SDVersion deviceVersion] == iPhone12Pro))
+#define SDVersion6and1Inch	(([SDVersion deviceVersion] == iPhoneXR) || ([SDVersion deviceVersion] == iPhone11) || ([SDVersion deviceVersion] == iPhone12) || ([SDVersion deviceVersion] == iPhone12Pro) || ([SDVersion deviceVersion] == iPhone13) || ([SDVersion deviceVersion] == iPhone13Pro))
 
-#define SDVersion6and5Inch	(([SDVersion deviceVersion] == iPhoneXSMax) || ([SDVersion deviceVersion] == iPhone11ProMax) | ([SDVersion deviceVersion] == iPhone12ProMax))
+#define SDVersion6and5Inch	(([SDVersion deviceVersion] == iPhoneXSMax) || ([SDVersion deviceVersion] == iPhone11ProMax) || ([SDVersion deviceVersion] == iPhone12ProMax) || ([SDVersion deviceVersion] == iPhone13ProMax))
 
-#define SDVersion7and9Inch	(([SDVersion deviceVersion] == iPadMini2) | ([SDVersion deviceVersion] == iPadMini3) | ([SDVersion deviceVersion] == iPadMini4) | ([SDVersion deviceVersion] == iPadMini5))
+#define SDVersion7and9Inch	(([SDVersion deviceVersion] == iPadMini2) || ([SDVersion deviceVersion] == iPadMini3) || ([SDVersion deviceVersion] == iPadMini4) || ([SDVersion deviceVersion] == iPadMini5) || ([SDVersion deviceVersion] == iPadMini6))
 
-#define SDVersioniPhone12Series	(([SDVersion deviceVersion] == iPhone12Mini) | ([SDVersion deviceVersion] == iPhone12Mini) | ([SDVersion deviceVersion] == iPhone12Pro) | ([SDVersion deviceVersion] == iPhone12ProMax))
+#define SDVersioniPhone12Series	(([SDVersion deviceVersion] == iPhone12Mini) || ([SDVersion deviceVersion] == iPhone12) || ([SDVersion deviceVersion] == iPhone12Pro) || ([SDVersion deviceVersion] == iPhone12ProMax) || \
+								([SDVersion deviceVersion] == iPhone13Mini) || ([SDVersion deviceVersion] == iPhone13) || ([SDVersion deviceVersion] == iPhone13Pro) || ([SDVersion deviceVersion] == iPhone13ProMax))
 
 //#define SDVersion11Inch		(([SDVersion deviceVersion] == iPadPro11Inch) || ([SDVersion deviceVersion] == iPadPro11Inch2Gen) || ([SDVersion deviceVersion] == iPadAir4))
 

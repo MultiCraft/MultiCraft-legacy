@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -34,18 +34,20 @@
 		4B35A9F11EEE014F00274961 /* l_storage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B35A9EF1EEE014F00274961 /* l_storage.cpp */; };
 		4B35A9F41EEE017000274961 /* scripting_client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B35A9F21EEE017000274961 /* scripting_client.cpp */; };
 		4B35A9F71EEE018D00274961 /* scripting_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B35A9F51EEE018D00274961 /* scripting_server.cpp */; };
-		842A808C2339174C00A89418 /* ads.mm in Sources */ = {isa = PBXBuildFile; fileRef = 842A808B2339174C00A89418 /* ads.mm */; };
+		842A808C2339174C00A89418 /* ads.m in Sources */ = {isa = PBXBuildFile; fileRef = 842A808B2339174C00A89418 /* ads.m */; };
+		843F4C3126617D0D005277FA /* ZipArchive in Frameworks */ = {isa = PBXBuildFile; productRef = 843F4C3026617D0D005277FA /* ZipArchive */; };
 		8465A76522A7D4500095B7CA /* libintl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8465A76422A7D4500095B7CA /* libintl.cpp */; };
 		8473ED8125C055F80053293B /* static_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8473ED7F25C055F80053293B /* static_text.cpp */; };
 		8473ED8425C0562C0053293B /* lutf8lib.c in Sources */ = {isa = PBXBuildFile; fileRef = 8473ED8225C0562C0053293B /* lutf8lib.c */; };
 		849C4F86209656D3005EB041 /* ru.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 849C4F85209656D2005EB041 /* ru.lproj */; };
 		84A4380425535BA5002571D4 /* soft_oal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A4380325535BA5002571D4 /* soft_oal.framework */; };
 		84A4380525535BA5002571D4 /* soft_oal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84A4380325535BA5002571D4 /* soft_oal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		84A608A425F0A02900D79FCD /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 84A608A325F0A02900D79FCD /* Sentry */; };
 		84B9C11724A4D82400016BCE /* ConsentAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9C11524A4D82400016BCE /* ConsentAlertViewController.swift */; };
 		84B9C11824A4D82400016BCE /* ConsentAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B9C11624A4D82400016BCE /* ConsentAlertViewController.xib */; };
-		84C0FB1B24B35D9200606FAA /* Bugsnag in Frameworks */ = {isa = PBXBuildFile; productRef = 84C0FB1A24B35D9200606FAA /* Bugsnag */; };
 		84C32A3724AF7A4500445E92 /* Nantes in Frameworks */ = {isa = PBXBuildFile; productRef = 84C32A3624AF7A4500445E92 /* Nantes */; };
 		84C32A3924AF7DDE00445E92 /* UITextViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C32A3824AF7DDE00445E92 /* UITextViewPlaceholder.swift */; };
+		84C67B1E25D5E06B002E2735 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C67B1D25D5E06B002E2735 /* AppTrackingTransparency.framework */; };
 		84CD4A64248782720019B81D /* MainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CD4A59248782720019B81D /* MainWindow.swift */; };
 		84CD4A65248782720019B81D /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84CD4A5B248782720019B81D /* ProgressViewController.xib */; };
 		84CD4A66248782720019B81D /* MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84CD4A5C248782720019B81D /* MessageViewController.xib */; };
@@ -53,6 +55,8 @@
 		84CD4A68248782720019B81D /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CD4A5E248782720019B81D /* MessageViewController.swift */; };
 		84CD4A69248782720019B81D /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CD4A5F248782720019B81D /* ProgressViewController.swift */; };
 		84CD4A6C2487A0180019B81D /* ZipManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CD4A6B2487A0170019B81D /* ZipManager.swift */; };
+		84E2968925E29004000C495A /* libluajit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E2968825E28FF6000C495A /* libluajit.a */; };
+		84E2968C25E2A10F000C495A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E2968E25E2A10F000C495A /* InfoPlist.strings */; };
 		84FE40E224439C2F008E29DB /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FE40E124439C2F008E29DB /* libcurl.a */; };
 		8E0FFE3234B35EC9603EC82A /* Pods_MultiCraft.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73B0001862274A8FCC7614F0 /* Pods_MultiCraft.framework */; };
 		F87DC8BA210887C700393B64 /* mapgen_v7p.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F87DC8B9210887C700393B64 /* mapgen_v7p.cpp */; };
@@ -306,7 +310,7 @@
 		73B0001862274A8FCC7614F0 /* Pods_MultiCraft.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MultiCraft.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		840E2F9E233410F90088E7F7 /* SDVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDVersion.h; path = SDVersion/SDVersion.h; sourceTree = "<group>"; };
 		842A808A2339174B00A89418 /* ads.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ads.h; path = Ads/ads.h; sourceTree = "<group>"; };
-		842A808B2339174C00A89418 /* ads.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ads.mm; path = Ads/ads.mm; sourceTree = "<group>"; };
+		842A808B2339174C00A89418 /* ads.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ads.m; path = Ads/ads.m; sourceTree = "<group>"; };
 		8465A76122A7D4500095B7CA /* MessageCatalog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = MessageCatalog.hpp; path = ../../../../lib/intl/MessageCatalog.hpp; sourceTree = "<group>"; };
 		8465A76222A7D4500095B7CA /* libintl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libintl.h; path = ../../../../lib/intl/libintl.h; sourceTree = "<group>"; };
 		8465A76322A7D4500095B7CA /* Util.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Util.hpp; path = ../../../../lib/intl/Util.hpp; sourceTree = "<group>"; };
@@ -320,6 +324,7 @@
 		84B9C11524A4D82400016BCE /* ConsentAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentAlertViewController.swift; sourceTree = "<group>"; };
 		84B9C11624A4D82400016BCE /* ConsentAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConsentAlertViewController.xib; sourceTree = "<group>"; };
 		84C32A3824AF7DDE00445E92 /* UITextViewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewPlaceholder.swift; sourceTree = "<group>"; };
+		84C67B1D25D5E06B002E2735 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		84CD4A55248781420019B81D /* Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridge-Header.h"; sourceTree = "<group>"; };
 		84CD4A59248782720019B81D /* MainWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindow.swift; sourceTree = "<group>"; };
 		84CD4A5B248782720019B81D /* ProgressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressViewController.xib; sourceTree = "<group>"; };
@@ -328,6 +333,9 @@
 		84CD4A5E248782720019B81D /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		84CD4A5F248782720019B81D /* ProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		84CD4A6B2487A0170019B81D /* ZipManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipManager.swift; sourceTree = "<group>"; };
+		84E2968825E28FF6000C495A /* libluajit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libluajit.a; path = ../deps/luajit/lib/libluajit.a; sourceTree = "<group>"; };
+		84E2968D25E2A10F000C495A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		84E2968F25E2A164000C495A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84FE40E124439C2F008E29DB /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../deps/libcurl/lib/libcurl.a; sourceTree = "<group>"; };
 		F87DC8B8210887C600393B64 /* mapgen_v7p.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mapgen_v7p.h; path = ../../../../src/mapgen_v7p.h; sourceTree = "<group>"; };
 		F87DC8B9210887C700393B64 /* mapgen_v7p.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mapgen_v7p.cpp; path = ../../../../src/mapgen_v7p.cpp; sourceTree = "<group>"; };
@@ -335,7 +343,7 @@
 		F8E6C4E81DCA3B7900F64426 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8E6C4EB1DCA3B7900F64426 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F8E6C4ED1DCA3B7900F64426 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F8E6C4F31DCA3EA400F64426 /* ioswrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioswrap.h; sourceTree = "<group>"; };
+		F8E6C4F31DCA3EA400F64426 /* ioswrap.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc.preprocessed; fileEncoding = 4; path = ioswrap.h; sourceTree = "<group>"; };
 		F8E6C4F41DCA3EA400F64426 /* ioswrap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ioswrap.m; sourceTree = "<group>"; };
 		F8E6C4F71DCA3F9900F64426 /* activeobject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = activeobject.h; path = ../../../../src/activeobject.h; sourceTree = "<group>"; };
 		F8E6C4F81DCA3F9900F64426 /* ban.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ban.cpp; path = ../../../../src/ban.cpp; sourceTree = "<group>"; };
@@ -726,17 +734,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84C0FB1B24B35D9200606FAA /* Bugsnag in Frameworks */,
 				F8E6C7CD1DCA431B00F64426 /* Foundation.framework in Frameworks */,
 				84FE40E224439C2F008E29DB /* libcurl.a in Frameworks */,
 				F8E6C7D71DCA477600F64426 /* libfreetype.a in Frameworks */,
 				F8E6C7D51DCA476800F64426 /* libIrrlicht.a in Frameworks */,
+				84A608A425F0A02900D79FCD /* Sentry in Frameworks */,
+				843F4C3126617D0D005277FA /* ZipArchive in Frameworks */,
 				84C32A3724AF7A4500445E92 /* Nantes in Frameworks */,
 				F8E6C7C91DCA430300F64426 /* OpenGLES.framework in Frameworks */,
 				8E0FFE3234B35EC9603EC82A /* Pods_MultiCraft.framework in Frameworks */,
 				F8E6C7C51DCA42F300F64426 /* QuartzCore.framework in Frameworks */,
+				84C67B1E25D5E06B002E2735 /* AppTrackingTransparency.framework in Frameworks */,
 				84A4380425535BA5002571D4 /* soft_oal.framework in Frameworks */,
 				F8E6C7C71DCA42FA00F64426 /* UIKit.framework in Frameworks */,
+				84E2968925E29004000C495A /* libluajit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -840,6 +851,7 @@
 				F8E6C4E81DCA3B7900F64426 /* Assets.xcassets */,
 				F8E6C4EA1DCA3B7900F64426 /* LaunchScreen.storyboard */,
 				F8E6C4ED1DCA3B7900F64426 /* Info.plist */,
+				84E2968E25E2A10F000C495A /* InfoPlist.strings */,
 				F8E6C4DC1DCA3B7900F64426 /* Supporting Files */,
 				F8E6C4F61DCA3EAF00F64426 /* src */,
 			);
@@ -856,7 +868,7 @@
 				F8E6C4F41DCA3EA400F64426 /* ioswrap.m */,
 				840E2F9E233410F90088E7F7 /* SDVersion.h */,
 				842A808A2339174B00A89418 /* ads.h */,
-				842A808B2339174C00A89418 /* ads.mm */,
+				842A808B2339174C00A89418 /* ads.m */,
 				F8E6C7E01DCA4EB300F64426 /* assets.zip */,
 			);
 			name = "Supporting Files";
@@ -1379,6 +1391,8 @@
 		F8E6C7C31DCA42F300F64426 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84E2968825E28FF6000C495A /* libluajit.a */,
+				84C67B1D25D5E06B002E2735 /* AppTrackingTransparency.framework */,
 				84FE40E124439C2F008E29DB /* libcurl.a */,
 				F8E6C7D61DCA477600F64426 /* libfreetype.a */,
 				F8E6C7D41DCA476800F64426 /* libIrrlicht.a */,
@@ -1404,10 +1418,10 @@
 				F8E6C4D51DCA3B7900F64426 /* Sources */,
 				F8E6C4D61DCA3B7900F64426 /* Frameworks */,
 				F8E6C4D71DCA3B7900F64426 /* Resources */,
-				E156912616D2E9233FC1C9F4 /* [CP] Copy Pods Resources */,
 				7055146ABE25F98BDC1A6400 /* [CP] Embed Pods Frameworks */,
-				4EB364AA68EABAF7EBC092CB /* Upload Bugsnag dSYM */,
 				84A4380625535BA5002571D4 /* Embed Frameworks */,
+				84F1E21825F0B70500A731AE /* Upload Sentry */,
+				A91BBBFDFB91D0CBDAABCA4E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1416,7 +1430,8 @@
 			name = MultiCraft;
 			packageProductDependencies = (
 				84C32A3624AF7A4500445E92 /* Nantes */,
-				84C0FB1A24B35D9200606FAA /* Bugsnag */,
+				84A608A325F0A02900D79FCD /* Sentry */,
+				843F4C3026617D0D005277FA /* ZipArchive */,
 			);
 			productName = MultiCraft;
 			productReference = F8E6C4D91DCA3B7900F64426 /* MultiCraft.app */;
@@ -1429,7 +1444,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1210;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = MultiCraft;
 				TargetAttributes = {
 					F8E6C4D81DCA3B7900F64426 = {
@@ -1444,17 +1459,19 @@
 				};
 			};
 			buildConfigurationList = F8E6C4D41DCA3B7900F64426 /* Build configuration list for PBXProject "MultiCraft" */;
-			compatibilityVersion = "Xcode 12.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = F8E6C4D01DCA3B7900F64426;
 			packageReferences = (
 				84C32A3524AF7A4500445E92 /* XCRemoteSwiftPackageReference "Nantes" */,
-				84C0FB1924B35D9200606FAA /* XCRemoteSwiftPackageReference "bugsnag-cocoa" */,
+				84A608A225F0A02900D79FCD /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
+				843F4C2F26617D0D005277FA /* XCRemoteSwiftPackageReference "ZipArchive" */,
 			);
 			productRefGroup = F8E6C4DA1DCA3B7900F64426 /* Products */;
 			projectDirPath = "";
@@ -1476,6 +1493,7 @@
 				F8E6C7E11DCA4EB300F64426 /* assets.zip in Resources */,
 				84B9C11824A4D82400016BCE /* ConsentAlertViewController.xib in Resources */,
 				84CD4A65248782720019B81D /* ProgressViewController.xib in Resources */,
+				84E2968C25E2A10F000C495A /* InfoPlist.strings in Resources */,
 				84CD4A66248782720019B81D /* MessageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1483,25 +1501,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4EB364AA68EABAF7EBC092CB /* Upload Bugsnag dSYM */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Upload Bugsnag dSYM";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/usr/bin/env ruby";
-			shellScript = "# First, attempt to get the API key from an environment variable\napi_key = ENV[\"BUGSNAG_API_KEY\"]\n\n# If not present, attempt to lookup the value from the Info.plist\nif !api_key\n  default_info_plist_location = Dir.glob(\"./{ios/,}*/Info.plist\").reject {|path| path =~ /build|test/i }\n  plist_buddy_response = `/usr/libexec/PlistBuddy -c \"print :BugsnagAPIKey\" \"#{default_info_plist_location.first}\"`\n  api_key = plist_buddy_response if $?.success?\nend\n\nfork do\n  Process.setsid\n  STDIN.reopen(\"/dev/null\")\n  STDOUT.reopen(\"/dev/null\", \"a\")\n  STDERR.reopen(\"/dev/null\", \"a\")\n\n  require 'shellwords'\n\n  Dir[\"#{ENV[\"DWARF_DSYM_FOLDER_PATH\"]}/*/Contents/Resources/DWARF/*\"].each do |dsym|\n    curl_command = \"curl -F dsym=@#{Shellwords.escape(dsym)} -F projectRoot=#{Shellwords.escape(ENV[\"PROJECT_DIR\"])} \"\n    curl_command += \"-F apiKey=#{Shellwords.escape(api_key)} \" if api_key\n    curl_command += \"https://upload.bugsnag.com/\"\n    system(curl_command)\n  end\nend\n";
-			showEnvVarsInLog = 0;
-		};
 		7055146ABE25F98BDC1A6400 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1517,6 +1516,38 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MultiCraft/Pods-MultiCraft-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		84F1E21825F0B70500A731AE /* Upload Sentry */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+			);
+			name = "Upload Sentry";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which sentry-cli >/dev/null; then\nexport SENTRY_ORG=multicraft\nexport SENTRY_PROJECT=multicraft-ios\nexport SENTRY_AUTH_TOKEN=8343341b264d4dc5aadfaac4b3927ad6402ed898b8b340a380ac506b432677aa\nERROR=$(sentry-cli upload-dif \"$DWARF_DSYM_FOLDER_PATH\" 2>&1 >/dev/null)\nif [ ! $? -eq 0 ]; then\necho \"warning: sentry-cli - $ERROR\"\nfi\nelse\necho \"warning: sentry-cli not installed, download from https://github.com/getsentry/sentry-cli/releases\"\nfi\n";
+		};
+		A91BBBFDFB91D0CBDAABCA4E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MultiCraft/Pods-MultiCraft-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MultiCraft/Pods-MultiCraft-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MultiCraft/Pods-MultiCraft-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C73312165F97B96FC254B124 /* [CP] Check Pods Manifest.lock */ = {
@@ -1535,23 +1566,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E156912616D2E9233FC1C9F4 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MultiCraft/Pods-MultiCraft-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MultiCraft/Pods-MultiCraft-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MultiCraft/Pods-MultiCraft-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1576,7 +1590,7 @@
 				4B35A9B31EEDD16C00274961 /* database-files.cpp in Sources */,
 				F8E6C64E1DCA3F9900F64426 /* rollback_interface.cpp in Sources */,
 				4B35A9F71EEE018D00274961 /* scripting_server.cpp in Sources */,
-				842A808C2339174C00A89418 /* ads.mm in Sources */,
+				842A808C2339174C00A89418 /* ads.m in Sources */,
 				F8E6C6441DCA3F9900F64426 /* noise.cpp in Sources */,
 				F8E6C7BB1DCA428800F64426 /* numeric.cpp in Sources */,
 				4B35A9B91EEDD1AC00274961 /* itemstackmetadata.cpp in Sources */,
@@ -1776,6 +1790,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		84E2968E25E2A10F000C495A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84E2968D25E2A10F000C495A /* en */,
+				84E2968F25E2A164000C495A /* ru */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		F8E6C4EA1DCA3B7900F64426 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1783,6 +1806,8 @@
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
+			tabWidth = 4;
+			usesTabs = 1;
 		};
 /* End PBXVariantGroup section */
 
@@ -1790,6 +1815,7 @@
 		F8E6C4EE1DCA3B7900F64426 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1808,7 +1834,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				STRIP_PNG_TEXT = NO;
@@ -1820,6 +1846,7 @@
 		F8E6C4EF1DCA3B7900F64426 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1837,7 +1864,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LLVM_LTO = YES;
 				SDKROOT = iphoneos;
 				STRIP_PNG_TEXT = NO;
@@ -1854,7 +1881,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 117;
+				CURRENT_PROJECT_VERSION = 137;
 				DEVELOPMENT_TEAM = R3RLJ9TW52;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -1870,15 +1897,18 @@
 					"HAVE_TOUCHSCREENGUI=1",
 					"ENABLE_GLES=1",
 				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"${SRCROOT}/../../../src",
 					"${SRCROOT}/../../../src/script",
+					"${SRCROOT}/../../../lib/gmp",
+					"${SRCROOT}/../../../lib/intl",
 					"${SRCROOT}/../../../lib/jsoncpp",
 					"${SRCROOT}/../deps/freetype/include/freetype2",
-					"${SRCROOT}/../../../lib/intl",
 					"${SRCROOT}/../deps/irrlicht/include",
 					"${SRCROOT}/../deps/libcurl/include",
+					"${SRCROOT}/../deps/luajit/include",
 				);
 				INFOPLIST_FILE = MultiCraft/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1886,13 +1916,9 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 1.15.2;
+				MARKETING_VERSION = 1.17.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/SSZipArchive\"",
 					"-fvisibility=hidden",
 					"-fdata-sections",
 					"-ffunction-sections",
@@ -1905,6 +1931,7 @@
 					"-L${SRCROOT}/../deps/freetype/lib",
 					"-L${SRCROOT}/../deps/irrlicht",
 					"-L${SRCROOT}/../deps/libcurl/lib",
+					"-L${SRCROOT}/../deps/luajit/lib",
 					"-Wl,-dead_strip",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -DDEBUG";
@@ -1920,7 +1947,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 117;
+				CURRENT_PROJECT_VERSION = 137;
 				DEVELOPMENT_TEAM = R3RLJ9TW52;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -1937,15 +1964,18 @@
 					"HAVE_TOUCHSCREENGUI=1",
 					"ENABLE_GLES=1",
 				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"${SRCROOT}/../../../src",
 					"${SRCROOT}/../../../src/script",
+					"${SRCROOT}/../../../lib/gmp",
+					"${SRCROOT}/../../../lib/intl",
 					"${SRCROOT}/../../../lib/jsoncpp",
 					"${SRCROOT}/../deps/freetype/include/freetype2",
-					"${SRCROOT}/../../../lib/intl",
 					"${SRCROOT}/../deps/irrlicht/include",
 					"${SRCROOT}/../deps/libcurl/include",
+					"${SRCROOT}/../deps/luajit/include",
 				);
 				INFOPLIST_FILE = MultiCraft/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1953,13 +1983,9 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 1.15.2;
+				MARKETING_VERSION = 1.17.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/SSZipArchive\"",
 					"-fvisibility=hidden",
 					"-fdata-sections",
 					"-ffunction-sections",
@@ -1972,6 +1998,7 @@
 					"-L${SRCROOT}/../deps/freetype/lib",
 					"-L${SRCROOT}/../deps/irrlicht",
 					"-L${SRCROOT}/../deps/libcurl/lib",
+					"-L${SRCROOT}/../deps/luajit/lib",
 					"-Wl,-dead_strip",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = mobi.MultiCraft;
@@ -2004,12 +2031,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		84C0FB1924B35D9200606FAA /* XCRemoteSwiftPackageReference "bugsnag-cocoa" */ = {
+		843F4C2F26617D0D005277FA /* XCRemoteSwiftPackageReference "ZipArchive" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/bugsnag/bugsnag-cocoa";
+			repositoryURL = "https://github.com/ZipArchive/ZipArchive";
 			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 6.6.0;
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.0;
+			};
+		};
+		84A608A225F0A02900D79FCD /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/getsentry/sentry-cocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.5.0;
 			};
 		};
 		84C32A3524AF7A4500445E92 /* XCRemoteSwiftPackageReference "Nantes" */ = {
@@ -2023,10 +2058,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		84C0FB1A24B35D9200606FAA /* Bugsnag */ = {
+		843F4C3026617D0D005277FA /* ZipArchive */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 84C0FB1924B35D9200606FAA /* XCRemoteSwiftPackageReference "bugsnag-cocoa" */;
-			productName = Bugsnag;
+			package = 843F4C2F26617D0D005277FA /* XCRemoteSwiftPackageReference "ZipArchive" */;
+			productName = ZipArchive;
+		};
+		84A608A325F0A02900D79FCD /* Sentry */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84A608A225F0A02900D79FCD /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			productName = Sentry;
 		};
 		84C32A3624AF7A4500445E92 /* Nantes */ = {
 			isa = XCSwiftPackageProductDependency;

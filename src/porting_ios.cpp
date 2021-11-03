@@ -1,7 +1,7 @@
 /*
 MultiCraft
 
-Copyright (C) 2014-2020 Maksim Gamarnik [MoNTE48] MoNTE48@mail.ua
+Copyright (C) 2014-2021 Maksim Gamarnik [MoNTE48] MoNTE48@mail.ua
 Copyright (C) 2016-2019 sfan5
 
 This program is free software; you can redistribute it and/or modify
@@ -61,6 +61,7 @@ namespace porting {
 
 	void setViewController(void *v) {
 		uiviewcontroller = v;
+		ioswrap_init_viewc(v);
 	}
 
 	void showInputDialog(const std::string &acceptButton, const std::string &hint,
@@ -79,22 +80,18 @@ namespace porting {
 	}
 
 	void notifyServerConnect(bool is_multiplayer) {
-#ifdef ADS
-		ads_allow(!is_multiplayer);
-#endif
+		ioswrap_server_connect(is_multiplayer);
 	}
 
 	void notifyExitGame() {
-#ifdef ADS
-		ads_allow(true);
-#endif
+		ioswrap_exit_game();
 	}
 }
 
 extern int real_main(int argc, char *argv[]);
 
 void irrlicht_main() {
-	init_IOS_Settings();
+	ioswrap_init();
 	static const char *args[] = {
 			PROJECT_NAME,
 	};
