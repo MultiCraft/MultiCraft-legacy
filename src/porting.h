@@ -337,6 +337,8 @@ inline const char *getPlatformName()
 // Touchscreen device specific function
 bool hasRealKeyboard();
 
+void handleError(const std::string &errType, const std::string &err);
+
 void setXorgClassHint(const video::SExposedVideoData &video_data,
 	const std::string &name);
 

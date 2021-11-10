@@ -191,4 +191,8 @@ public class GameActivity extends NativeActivity {
 	public void finishGame(String exc) {
 		finish();
 	}
+
+	public void handleError(String message) {
+		// Log errors from native
+	}
 }

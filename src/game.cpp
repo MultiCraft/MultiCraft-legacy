@@ -4982,9 +4982,11 @@ void the_game(bool *kill,
 	} catch (ServerError &e) {
 		error_message = e.what();
 		errorstream << "ServerError: " << error_message << std::endl;
+		porting::handleError("ServerError", error_message);
 	} catch (ModError &e) {
 		error_message = e.what() + strgettext("\nCheck debug.txt for details.");
 		errorstream << "ModError: " << error_message << std::endl;
+		porting::handleError("ModError", error_message);
 	}
 	game.shutdown();
 	g_game = NULL;
