@@ -28,7 +28,6 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "config.h"
 #include "filesys.h"
 #include "log.h"
-#include <sstream>
 
 #ifdef GPROF
 #include "prof.h"
@@ -296,10 +295,8 @@ void handleError(const std::string &errType, const std::string &err) {
 	FATAL_ERROR_IF(report_err == nullptr,
 			"porting::handleError unable to find java handleError method");
 
-	std::ostringstream os;
-	os << errType << ": " << err;
-
-	jstring jerr = jnienv->NewStringUTF(os.str().c_str());
+	std::string errorMessage = errType + ": " + err;
+	jstring jerr = jnienv->NewStringUTF(errorMessage.c_str());
 	jnienv->CallVoidMethod(app_global->activity->clazz, report_err, jerr);
 }
 
