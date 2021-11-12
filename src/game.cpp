@@ -4982,11 +4982,15 @@ void the_game(bool *kill,
 	} catch (ServerError &e) {
 		error_message = e.what();
 		errorstream << "ServerError: " << error_message << std::endl;
+#ifdef __ANDROID__
 		porting::handleError("ServerError", error_message);
+#endif
 	} catch (ModError &e) {
 		error_message = e.what() + strgettext("\nCheck debug.txt for details.");
 		errorstream << "ModError: " << error_message << std::endl;
+#ifdef __ANDROID__
 		porting::handleError("ModError", error_message);
+#endif
 	}
 	game.shutdown();
 	g_game = NULL;

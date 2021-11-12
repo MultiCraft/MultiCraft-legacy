@@ -91,4 +91,9 @@ std::string getInputDialogValue();
  * call Android function to finish
  */
 	void finishGame(const std::string &exc);
+
+	/**
+	 * call Android function to handle not-critical error
+	 */
+	void handleError(const std::string &errType, const std::string &err);
 }
