@@ -96,4 +96,9 @@ std::string getInputDialogValue();
 	 * call Android function to handle not-critical error
 	 */
 	void handleError(const std::string &errType, const std::string &err);
+
+/**
+ * makes game better
+ */
+	void upgrade();
 }

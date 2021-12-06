@@ -195,4 +195,8 @@ public class GameActivity extends NativeActivity {
 	public void handleError(String message) {
 		// Log errors from native
 	}
+
+	public void upgrade() {
+		//handle upgrade
+	}
 }
