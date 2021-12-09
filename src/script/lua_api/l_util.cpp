@@ -574,7 +574,7 @@ void ModApiUtil::InitializeAsync(lua_State *L, int top)
 	lua_setfield(L, top, "settings");
 }
 
-void ModApiUtil::InitializeMainMenu(lua_state *L, int top) {
+void ModApiUtil::InitializeMainMenu(lua_State *L, int top) {
 	Initialize(L, top);
 	API_FCT(upgrade);
 }
