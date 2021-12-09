@@ -517,7 +517,6 @@ void ModApiUtil::Initialize(lua_State *L, int top)
 
 	API_FCT(get_version);
 	API_FCT(sha1);
-	API_FCT(upgrade);
 
 	LuaSettings::create(L, g_settings, g_settings_path);
 	lua_setfield(L, top, "settings");
@@ -544,7 +543,6 @@ void ModApiUtil::InitializeClient(lua_State *L, int top)
 
 	API_FCT(get_version);
 	API_FCT(sha1);
-	API_FCT(upgrade);
 }
 
 void ModApiUtil::InitializeAsync(lua_State *L, int top)
@@ -571,8 +569,12 @@ void ModApiUtil::InitializeAsync(lua_State *L, int top)
 
 	API_FCT(get_version);
 	API_FCT(sha1);
-	API_FCT(upgrade);
 
 	LuaSettings::create(L, g_settings, g_settings_path);
 	lua_setfield(L, top, "settings");
+}
+
+void ModApiUtil::InitializeMainMenu(lua_state *L, int top) {
+	Initialize(L, top);
+	API_FCT(upgrade);
 }

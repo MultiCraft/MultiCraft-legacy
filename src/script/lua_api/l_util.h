@@ -106,6 +106,7 @@ public:
 	static void Initialize(lua_State *L, int top);
 	static void InitializeAsync(lua_State *L, int top);
 	static void InitializeClient(lua_State *L, int top);
+	static void InitializeMainMenu(lua_State *L, int top);
 
 	static void InitializeAsync(AsyncEngine &engine);
 };

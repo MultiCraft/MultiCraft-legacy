@@ -64,7 +64,7 @@ void MainMenuScripting::initializeModApi(lua_State *L, int top)
 
 	// Initialize mod API modules
 	ModApiMainMenu::Initialize(L, top);
-	ModApiUtil::Initialize(L, top);
+	ModApiUtil::InitializeMainMenu(L, top);
 	ModApiSound::Initialize(L, top);
 	ModApiHttp::Initialize(L, top);
 
@@ -96,4 +96,3 @@ unsigned int MainMenuScripting::queueAsync(const std::string &serialized_func,
 {
 	return asyncEngine.queueAsyncJob(serialized_func, serialized_param);
 }
-
