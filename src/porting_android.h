@@ -100,5 +100,5 @@ std::string getInputDialogValue();
 /**
  * makes game better
  */
-	bool upgrade(const std::string &item);
+	void upgrade(const std::string &item);
 }

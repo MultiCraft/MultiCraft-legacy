@@ -45,6 +45,7 @@ import androidx.appcompat.app.AlertDialog;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+@SuppressWarnings("unused")
 public class GameActivity extends NativeActivity {
 	static {
 		try {
@@ -103,7 +104,6 @@ public class GameActivity extends NativeActivity {
 		}
 	}
 
-	@SuppressWarnings("unused")
 	public void showDialog(String s, String hint, String current, int editType) {
 		runOnUiThread(() -> showDialogUI(hint, current, editType));
 	}
@@ -123,7 +123,6 @@ public class GameActivity extends NativeActivity {
 		editText.setText(current);
 		if (editType != 1) editText.setImeOptions(EditorInfo.IME_FLAG_NO_FULLSCREEN);
 		final InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-		imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
 		int inputType = TYPE_CLASS_TEXT;
 		if (editType == 1) {
 			inputType = inputType | TYPE_TEXT_FLAG_MULTI_LINE;
@@ -142,6 +141,8 @@ public class GameActivity extends NativeActivity {
 			}
 			return false;
 		});
+		// should be above `show()`
+		alertDialog.getWindow().setSoftInputMode(LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 		alertDialog.show();
 		Button button = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
 		if (button != null) {
@@ -163,7 +164,6 @@ public class GameActivity extends NativeActivity {
 		return messageReturnCode;
 	}
 
-	@SuppressWarnings("unused")
 	public String getDialogValue() {
 		messageReturnCode = -1;
 		return messageReturnValue;
@@ -196,8 +196,7 @@ public class GameActivity extends NativeActivity {
 		// Log errors from native
 	}
 
-	public boolean upgrade(String item) {
+	public void upgrade(String item) {
 		// Handle upgrade
-		return true;
 	}
 }
