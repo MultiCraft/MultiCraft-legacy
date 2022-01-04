@@ -698,7 +698,7 @@ public:
 		m_sky_bg_color.set(bgcolorfa, services);
 
 		// Fog distance
-		float fog_distance = -1.0f;
+		float fog_distance = -1.0f; // sentinel for disabled fog
 
 		if (m_fog_enabled && !*m_force_fog_off)
 			fog_distance = *m_fog_range;
@@ -4372,7 +4372,7 @@ void Game::updateFrame(ProfilerGraph *graph, RunStats *stats, f32 dtime,
 			guienv, screensize, skycolor, flags.show_hud,
 			flags.show_minimap);
 
-	driver->getOverrideMaterial().EnableFlags &= ~video::EMF_FOG_ENABLE;
+	driver->getOverrideMaterial().EnableFlags = 0;
 	driver->getOverrideMaterial().EnablePasses = 0;
 
 	/*

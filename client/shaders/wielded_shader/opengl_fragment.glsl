@@ -40,7 +40,7 @@ void main(void)
 	// As additions usually come for free following a multiplication, the new formula
 	// should be more efficient as well.
 	// Note: clarity = (1 - fogginess)
-	if (fogDistance > 0.0) {
+	if (fogDistance > 0.0) { // -1.0 means disabled
 		float clarity = clamp(fogShadingParameter
 			- fogShadingParameter * length(eyeVec) / fogDistance, 0.0, 1.0);
 		col = mix(skyBgColor, col, clarity);
