@@ -4190,15 +4190,7 @@ void Game::updateFrame(ProfilerGraph *graph, RunStats *stats, f32 dtime,
 	*/
 
 	runData.disable_fog = !m_cache_enable_fog || flags.force_fog_off || draw_control->range_all;
-	if (draw_control->range_all) {
-		#if defined(__ANDROID__) || defined(__IOS__)
-			runData.fog_range = draw_control->wanted_range * 4 * BS;
-		#else
-			runData.fog_range = 100000 * BS;
-		#endif
-	} else {
-		runData.fog_range = draw_control->wanted_range * BS;
-	}
+	runData.fog_range = draw_control->wanted_range * BS;
 
 	/*
 		Calculate general brightness
@@ -4269,27 +4261,15 @@ void Game::updateFrame(ProfilerGraph *graph, RunStats *stats, f32 dtime,
 		Fog
 	*/
 
-	if (m_cache_enable_fog && !flags.force_fog_off) {
-		driver->setFog(
-				sky->getBgColor(),
-				video::EFT_FOG_LINEAR,
-				runData.fog_range * m_cache_fog_start,
-				runData.fog_range * 1.0,
-				0.01,
-				false, // pixel fog
-				true // range fog
-		);
-	} else {
-		driver->setFog(
-				sky->getBgColor(),
-				video::EFT_FOG_LINEAR,
-				100000 * BS,
-				110000 * BS,
-				0.01,
-				false, // pixel fog
-				false // range fog
-		);
-	}
+	driver->setFog(
+			sky->getBgColor(),
+			video::EFT_FOG_LINEAR,
+			runData.fog_range * m_cache_fog_start,
+			runData.fog_range * 1.0,
+			0.01,
+			false, // pixel fog
+			true // range fog
+	);
 
 	/*
 		Get chat messages from client
@@ -4380,9 +4360,20 @@ void Game::updateFrame(ProfilerGraph *graph, RunStats *stats, f32 dtime,
 	TimeTaker tt_draw("mainloop: draw");
 	driver->beginScene(true, true, skycolor);
 
+	if (runData.disable_fog) {
+		driver->getOverrideMaterial().reset();
+		driver->getOverrideMaterial().EnableFlags = video::EMF_FOG_ENABLE;
+		driver->getOverrideMaterial().EnablePasses = irr::scene::ESNRP_SKY_BOX
+				| irr::scene::ESNRP_SOLID | irr::scene::ESNRP_TRANSPARENT
+				| irr::scene::ESNRP_TRANSPARENT_EFFECT | irr::scene::ESNRP_SHADOW;
+	}
+
 	draw_scene(driver, smgr, *camera, *client, player, *hud, mapper,
 			guienv, screensize, skycolor, flags.show_hud,
 			flags.show_minimap);
+
+	driver->getOverrideMaterial().EnableFlags &= ~video::EMF_FOG_ENABLE;
+	driver->getOverrideMaterial().EnablePasses = 0;
 
 	/*
 		Profiler graph
