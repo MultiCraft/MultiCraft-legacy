@@ -3,6 +3,7 @@ uniform sampler2D normalTexture;
 uniform sampler2D textureFlags;
 
 uniform vec4 skyBgColor;
+uniform mediump float fogDistance;
 uniform vec3 eyePosition;
 
 varying mediump vec4 varColor;
@@ -73,9 +74,11 @@ void main(void)
 	// As additions usually come for free following a multiplication, the new formula
 	// should be more efficient as well.
 	// Note: clarity = (1 - fogginess)
-	float clarity = clamp(fogShadingParameter
-		- fogShadingParameter * length(eyeVec), 0.0, 1.0);
-	col = mix(skyBgColor, col, clarity);
+	if (fogDistance > 0.0) {
+		float clarity = clamp(fogShadingParameter
+			- fogShadingParameter * length(eyeVec), 0.0, 1.0);
+		col = mix(skyBgColor, col, clarity);
+	}
 	col = vec4(col.rgb, base.a);
 
 	gl_FragColor = col;

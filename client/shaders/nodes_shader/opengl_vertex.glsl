@@ -1,7 +1,7 @@
 // Color of the light emitted by the sun.
 uniform highp mat4 mWorld;
 uniform vec3 dayLight;
-uniform float fogDistance;
+uniform mediump float fogDistance;
 uniform float animationTimer;
 
 varying mediump vec4 varColor;
