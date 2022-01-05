@@ -75,6 +75,9 @@ local function get_formspec()
 		creative_bg = "creative_bg_" .. lang .. ".png"
 	end
 
+	-- Default index
+	if index == 0 then index = 1 end
+
 	local retval =
 			"image_button[0,4.84;3.31,0.92;" ..
 				core.formspec_escape(defaulttexturedir ..

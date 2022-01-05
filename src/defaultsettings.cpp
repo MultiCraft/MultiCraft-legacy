@@ -380,7 +380,7 @@ void set_default_settings(Settings *settings) {
 	settings->setDefault("high_precision_fpu", "true");
 	settings->setDefault("enable_console", "false");
 
-	settings->setDefault("mainmenu_last_selected_world", "1");
+	// settings->setDefault("mainmenu_last_selected_world", "1");
 	settings->setDefault("device_is_tablet", "false");
 
 	// Altered settings for macOS
