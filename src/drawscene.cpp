@@ -60,7 +60,7 @@ void draw_anaglyph_3d_mode(Camera& camera, bool show_hud, Hud& hud,
 	//clear the depth buffer, and color
 	driver->beginScene( true, true, irr::video::SColor(0, 200, 200, 255));
 	driver->getOverrideMaterial().Material.ColorMask = irr::video::ECP_RED;
-	driver->getOverrideMaterial().EnableFlags = irr::video::EMF_COLOR_MASK;
+	driver->getOverrideMaterial().EnableFlags |= irr::video::EMF_COLOR_MASK;
 	driver->getOverrideMaterial().EnablePasses = irr::scene::ESNRP_SKY_BOX
 			+ irr::scene::ESNRP_SOLID + irr::scene::ESNRP_TRANSPARENT
 			+ irr::scene::ESNRP_TRANSPARENT_EFFECT + irr::scene::ESNRP_SHADOW;
@@ -88,7 +88,7 @@ void draw_anaglyph_3d_mode(Camera& camera, bool show_hud, Hud& hud,
 	driver->clearZBuffer();
 	driver->getOverrideMaterial().Material.ColorMask = irr::video::ECP_GREEN
 			+ irr::video::ECP_BLUE;
-	driver->getOverrideMaterial().EnableFlags = irr::video::EMF_COLOR_MASK;
+	driver->getOverrideMaterial().EnableFlags |= irr::video::EMF_COLOR_MASK;
 	driver->getOverrideMaterial().EnablePasses = irr::scene::ESNRP_SKY_BOX
 			+ irr::scene::ESNRP_SOLID + irr::scene::ESNRP_TRANSPARENT
 			+ irr::scene::ESNRP_TRANSPARENT_EFFECT + irr::scene::ESNRP_SHADOW;
