@@ -105,6 +105,7 @@ private:
 	std::string m_previous_texture_modifier; // stores texture modifier before punch update
 	std::string m_current_texture_modifier;  // last applied texture modifier
 	bool m_visuals_expired;
+	bool m_enable_shaders;
 	float m_step_distance_counter;
 	u8 m_last_light;
 	bool m_is_visible;

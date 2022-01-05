@@ -44,6 +44,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "wieldmesh.h"
 #include "log.h"
 #include "itemgroup.h"
+#include "shader.h"
 #include <algorithm>
 
 class Settings;
@@ -626,6 +627,8 @@ void GenericCAO::initialize(const std::string &data)
 		}
 		m_env->addPlayerName(m_name.c_str());
 	}
+
+	m_enable_shaders = g_settings->getBool("enable_shaders");
 }
 
 void GenericCAO::processInitData(const std::string &data)
@@ -800,6 +803,19 @@ void GenericCAO::addToScene(scene::ISceneManager *smgr,
 		return;
 	}
 
+	bool use_texture_alpha = m_prop.visual == "upright_sprite";
+	video::E_MATERIAL_TYPE material_type;
+
+	if (m_enable_shaders) {
+		IShaderSource *shader_source = m_client->getShaderSource();
+		MaterialType tile_type = use_texture_alpha ? TILE_MATERIAL_ALPHA : TILE_MATERIAL_BASIC;
+		u32 shader_id = shader_source->getShader("object_shader", tile_type, NDT_NORMAL);
+		material_type = shader_source->getShaderInfo(shader_id).material;
+	} else {
+		material_type = use_texture_alpha ?
+			video::EMT_TRANSPARENT_ALPHA_CHANNEL : video::EMT_TRANSPARENT_ALPHA_CHANNEL_REF;
+	}
+
 	if (m_prop.visual == "sprite") {
 		infostream<<"GenericCAO::addToScene(): single_sprite"<<std::endl;
 		m_spritenode = smgr->addBillboardSceneNode(
@@ -809,7 +825,7 @@ void GenericCAO::addToScene(scene::ISceneManager *smgr,
 				tsrc->getTextureForMesh("unknown_node.png"));
 		m_spritenode->setMaterialFlag(video::EMF_LIGHTING, false);
 		m_spritenode->setMaterialFlag(video::EMF_BILINEAR_FILTER, false);
-		m_spritenode->setMaterialType(video::EMT_TRANSPARENT_ALPHA_CHANNEL_REF);
+		m_spritenode->setMaterialType(material_type);
 		m_spritenode->setMaterialFlag(video::EMF_FOG_ENABLE, true);
 		u8 li = m_last_light;
 		m_spritenode->setColor(video::SColor(255,li,li,li));
@@ -841,7 +857,7 @@ void GenericCAO::addToScene(scene::ISceneManager *smgr,
 			buf->getMaterial().setFlag(video::EMF_LIGHTING, false);
 			buf->getMaterial().setFlag(video::EMF_BILINEAR_FILTER, false);
 			buf->getMaterial().setFlag(video::EMF_FOG_ENABLE, true);
-			buf->getMaterial().MaterialType = video::EMT_TRANSPARENT_ALPHA_CHANNEL;
+			buf->getMaterial().MaterialType = material_type;
 			// Add to mesh
 			mesh->addMeshBuffer(buf);
 			buf->drop();
@@ -860,7 +876,7 @@ void GenericCAO::addToScene(scene::ISceneManager *smgr,
 			buf->getMaterial().setFlag(video::EMF_LIGHTING, false);
 			buf->getMaterial().setFlag(video::EMF_BILINEAR_FILTER, false);
 			buf->getMaterial().setFlag(video::EMF_FOG_ENABLE, true);
-			buf->getMaterial().MaterialType = video::EMT_TRANSPARENT_ALPHA_CHANNEL_REF;
+			buf->getMaterial().MaterialType = material_type;
 			// Add to mesh
 			mesh->addMeshBuffer(buf);
 			buf->drop();
@@ -887,7 +903,7 @@ void GenericCAO::addToScene(scene::ISceneManager *smgr,
 
 		m_meshnode->setMaterialFlag(video::EMF_LIGHTING, false);
 		m_meshnode->setMaterialFlag(video::EMF_BILINEAR_FILTER, false);
-		m_meshnode->setMaterialType(video::EMT_TRANSPARENT_ALPHA_CHANNEL_REF);
+		m_meshnode->setMaterialType(material_type);
 		m_meshnode->setMaterialFlag(video::EMF_FOG_ENABLE, true);
 	}
 	else if(m_prop.visual == "mesh") {
@@ -911,7 +927,7 @@ void GenericCAO::addToScene(scene::ISceneManager *smgr,
 
 			m_animated_meshnode->setMaterialFlag(video::EMF_LIGHTING, false);
 			m_animated_meshnode->setMaterialFlag(video::EMF_BILINEAR_FILTER, false);
-			m_animated_meshnode->setMaterialType(video::EMT_TRANSPARENT_ALPHA_CHANNEL_REF);
+			m_animated_meshnode->setMaterialType(material_type);
 			m_animated_meshnode->setMaterialFlag(video::EMF_FOG_ENABLE, true);
 			m_animated_meshnode->setMaterialFlag(video::EMF_BACK_FACE_CULLING, backface_culling);
 		}
