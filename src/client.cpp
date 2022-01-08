@@ -138,19 +138,14 @@ Client::Client(
 	m_cache_save_interval = g_settings->getU16("server_map_save_interval");
 	m_inv_item_anim_enabled = g_settings->getBool("inventory_items_animations");
 
-#ifdef DISABLE_CSM
-	m_modding_enabled = false;
-#else
 	m_modding_enabled = g_settings->getBool("enable_client_modding");
 	m_script = new ClientScripting(this);
 	m_env.setScript(m_script);
 	m_script->setEnv(&m_env);
-#endif
 }
 
 void Client::initMods()
 {
-#ifndef DISABLE_CSM
 	m_script->loadMod(getBuiltinLuaPath() + DIR_DELIM "init.lua", BUILTIN_MOD_NAME);
 
 	// If modding is not enabled, don't load mods, just builtin
@@ -188,7 +183,6 @@ void Client::initMods()
 			<< script_path << "\"]" << std::endl;
 		m_script->loadMod(script_path, mod.name);
 	}
-#endif
 }
 
 const std::string &Client::getBuiltinLuaPath()
@@ -217,10 +211,8 @@ const ModSpec* Client::getModSpec(const std::string &modname) const
 void Client::Stop()
 {
 	m_shutdown = true;
-#ifndef DISABLE_CSM
 	// Don't disable this part when modding is disabled, it's used in builtin
 	m_script->on_shutdown();
-#endif
 	//request all client managed threads to stop
 	m_mesh_update_thread.stop();
 	// Save local server map
@@ -1763,12 +1755,10 @@ void Client::afterContentReceived(IrrlichtDevice *device)
 	m_state = LC_Ready;
 	sendReady();
 
-#ifndef DISABLE_CSM
 	if (g_settings->getBool("enable_client_modding")) {
 		m_script->on_client_ready(m_env.getLocalPlayer());
 		m_script->on_connect();
 	}
-#endif
 
 	text = wgettext("Done!");
 	draw_load_screen(text, device, guienv, m_tsrc, 0, 100);
