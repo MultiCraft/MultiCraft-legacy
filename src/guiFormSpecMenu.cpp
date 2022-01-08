@@ -2108,9 +2108,9 @@ void GUIFormSpecMenu::regenerateGui(v2u32 screensize)
 				mydata.screensize.Y * 0.9f
 			);
 
-			fitx_imgsize = mydata.screensize.X /
+			fitx_imgsize = padded_screensize.X /
 					((5.0 / 4.0) * (0.5 + mydata.invsize.X));
-			fity_imgsize = mydata.screensize.Y /
+			fity_imgsize = padded_screensize.Y /
 					((15.0 / 13.0) * (0.85 + mydata.invsize.Y));
 
 #if defined(__ANDROID__) || defined(__IOS__)
@@ -2120,20 +2120,10 @@ void GUIFormSpecMenu::regenerateGui(v2u32 screensize)
 
 			// Try to fit 13 coordinates on large tablets.
 			if (g_settings->getBool("device_is_tablet"))
-				prefer_imgsize = padded_screensize.Y / 13 * gui_scaling;
-
-			fitx_imgsize = floor(mydata.screensize.X /
-					(1.5 * (0.5 + mydata.invsize.X)));
-			fity_imgsize = floor(mydata.screensize.Y /
-					(1.15 * (0.85 + mydata.invsize.Y)));
+				prefer_imgsize = mydata.screensize.Y / 13 * gui_scaling;
 #else
 			// Desktop computers have more space, so try to fit 15 coordinates.
 			double prefer_imgsize = padded_screensize.Y / 15 * gui_scaling;
-
-			fitx_imgsize = padded_screensize.X /
-					((5.0 / 4.0) * (0.5 + mydata.invsize.X));
-			fity_imgsize = padded_screensize.Y /
-					((15.0 / 13.0) * (0.85 + mydata.invsize.Y));
 #endif
 			// Try to use the preferred imgsize, but if that's bigger than the maximum
 			// size, use the maximum size.
