@@ -138,6 +138,8 @@ bool ClientLauncher::run(GameParams &game_params, const Settings &cmd_args)
 	skin->setColor(gui::EGDC_3D_SHADOW, video::SColor(255, 0, 0, 0));
 	skin->setColor(gui::EGDC_HIGH_LIGHT, video::SColor(255, 70, 120, 50));
 	skin->setColor(gui::EGDC_HIGH_LIGHT_TEXT, video::SColor(255, 255, 255, 255));
+	float density = porting::getDisplayDensity() * g_settings->getFloat("gui_scaling");
+	skin->setSize(gui::EGDS_SCROLLBAR_SIZE, (s32) (14.0f * density));
 
 	g_fontengine = new FontEngine(g_settings, guienv);
 	FATAL_ERROR_IF(g_fontengine == NULL, "Font engine creation failed.");

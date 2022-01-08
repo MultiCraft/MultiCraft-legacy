@@ -68,9 +68,6 @@ GUITable::GUITable(gui::IGUIEnvironment *env,
 
 	gui::IGUISkin* skin = Environment->getSkin();
 
-	// 15 is default EGDS_SCROLLBAR_SIZE value
-	skin->setSize(irr::gui::EGDS_SCROLLBAR_SIZE, 15 * scale);
-
 	m_font = skin->getFont();
 	if (m_font) {
 		m_font->grab();
