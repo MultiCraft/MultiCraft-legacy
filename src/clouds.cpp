@@ -36,6 +36,21 @@ static void cloud_3d_setting_changed(const std::string &settingname, void *data)
 	((Clouds *)data)->readSettings();
 }
 
+static const std::vector<u16> quad_indices = []() {
+	int quad_count = 0x10000 / 4; // max number of quads that can be drawn with 16-bit indices
+	std::vector<u16> indices;
+	indices.reserve(quad_count * 6);
+	for (int k = 0; k < quad_count; k++) {
+		indices.push_back(4 * k + 0);
+		indices.push_back(4 * k + 1);
+		indices.push_back(4 * k + 2);
+		indices.push_back(4 * k + 2);
+		indices.push_back(4 * k + 3);
+		indices.push_back(4 * k + 0);
+	}
+	return indices;
+}();
+
 Clouds::Clouds(
 		scene::ISceneNode* parent,
 		scene::ISceneManager* mgr,
@@ -90,8 +105,6 @@ void Clouds::OnRegisterSceneNode()
 	ISceneNode::OnRegisterSceneNode();
 }
 
-#define MYROUND(x) (x > 0.0 ? (int)x : (int)x - 1)
-
 void Clouds::render()
 {
 
@@ -127,8 +140,8 @@ void Clouds::render()
 	v2f center_of_drawing_in_noise_f = -cloud_origin_from_camera_f;
 	// The integer center point of drawing in the noise
 	v2s16 center_of_drawing_in_noise_i(
-		MYROUND(center_of_drawing_in_noise_f.X / cloud_size),
-		MYROUND(center_of_drawing_in_noise_f.Y / cloud_size)
+		std::floor(center_of_drawing_in_noise_f.X / cloud_size),
+		std::floor(center_of_drawing_in_noise_f.Y / cloud_size)
 	);
 	// The world position of the integer center point of drawing in the noise
 	v2f world_center_of_drawing_in_noise_f = v2f(
@@ -175,8 +188,14 @@ void Clouds::render()
 
 	// Read noise
 
-	bool *grid = new bool[m_cloud_radius_i * 2 * m_cloud_radius_i * 2];
-
+	const int grid_length = 2 * m_cloud_radius_i;
+	std::vector<bool> grid(grid_length * grid_length);
+	auto grid_index = [&] (int x, int z) -> int {
+		return (z + m_cloud_radius_i) * grid_length + (x + m_cloud_radius_i);
+	};
+	auto grid_point = [&] (int x, int z) -> bool {
+		return grid[grid_index(x, z)];
+	};
 	float cloud_size_noise = cloud_size / BS / 200;
 
 	for(s16 zi = -m_cloud_radius_i; zi < m_cloud_radius_i; zi++) {
@@ -201,150 +220,78 @@ void Clouds::render()
 		}
 	}
 
-#define GETINDEX(x, z, radius) (((z)+(radius))*(radius)*2 + (x)+(radius))
-#define INAREA(x, z, radius) \
-	((x) >= -(radius) && (x) < (radius) && (z) >= -(radius) && (z) < (radius))
+	const float camera_y = m_camera_pos.Y + intToFloat(m_camera_offset, BS).Y;
+	const float rel_y = camera_y - m_params.height * BS;
+	const bool draw_top = !m_enable_3d || rel_y >= m_params.thickness * BS;
+	const bool draw_bottom = rel_y < 0.0f;
 
-	for (s16 zi0= -m_cloud_radius_i; zi0 < m_cloud_radius_i; zi0++)
-	for (s16 xi0= -m_cloud_radius_i; xi0 < m_cloud_radius_i; xi0++)
+	const v3f origin = v3f(world_center_of_drawing_in_noise_f.X, m_params.height * BS, world_center_of_drawing_in_noise_f.Y) - intToFloat(m_camera_offset, BS);
+	const f32 rx = cloud_size;
+	// if clouds are flat, the top layer should be at the given height
+	const f32 ry = m_enable_3d ? m_params.thickness * BS : 0.0f;
+	const f32 rz = cloud_size;
+
+	// std::vector is great but it is slow
+	// reserve+push/insert is slow because extending needs to check vector size
+	// resize+direct access is slow because resize initializes the whole vector
+	// so... malloc! it can't overflow as there can't be more than 6 quads per grid cell
+	video::S3DVertex *buf = (video::S3DVertex *)malloc(grid.size() * num_faces_to_draw * 4 * sizeof(video::S3DVertex));
+	video::S3DVertex *pv = buf;
+
+	const v3f faces[6][4] = {
+		{{0, ry, 0}, {0, ry, rz}, {rx, ry, rz}, {rx, ry, 0}}, // top
+		{{0, ry, 0}, {rx, ry, 0}, {rx, 0, 0}, {0, 0, 0}}, // back
+		{{rx, ry, 0}, {rx, ry, rz}, {rx, 0, rz}, {rx, 0, 0}}, // right
+		{{rx, ry, rz}, {0, ry, rz}, {0, 0, rz}, {rx, 0, rz}}, // front
+		{{0, ry, rz}, {0, ry, 0}, {0, 0, 0}, {0, 0, rz}}, // left
+		{{rx, 0, rz}, {0, 0, rz}, {0, 0, 0}, {rx, 0, 0}}, // bottom
+	};
+	const v3f normals[6] = {{0, 1, 0}, {0, 0, -1}, {1, 0, 0}, {0, 0, 1}, {-1, 0, 0}, {0, -1, 0}};
+	const video::SColor colors[6] = {c_top, c_side_1, c_side_2, c_side_1, c_side_2, c_bottom};
+	const v2f tex_coords[4] = {{0, 1}, {1, 1}, {1, 0}, {0, 0}};
+
+	// Draw from back to front for proper transparency
+	for (s16 zi0= 1-(int)m_cloud_radius_i; zi0 < m_cloud_radius_i-1; zi0++)
+	for (s16 xi0= 1-(int)m_cloud_radius_i; xi0 < m_cloud_radius_i-1; xi0++)
 	{
 		s16 zi = zi0;
 		s16 xi = xi0;
-		// Draw from front to back (needed for transparency)
-		/*if(zi <= 0)
-			zi = -m_cloud_radius_i - zi;
-		if(xi <= 0)
-			xi = -m_cloud_radius_i - xi;*/
-		// Draw from back to front
-		if(zi >= 0)
-			zi = m_cloud_radius_i - zi - 1;
-		if(xi >= 0)
-			xi = m_cloud_radius_i - xi - 1;
+		if (zi >= 0)
+			zi = m_cloud_radius_i - zi - 2;
+		if (xi >= 0)
+			xi = m_cloud_radius_i - xi - 2;
 
-		u32 i = GETINDEX(xi, zi, m_cloud_radius_i);
-
-		if(grid[i] == false)
+		if (!grid_point(xi, zi))
 			continue;
 
-		v2f p0 = v2f(xi,zi)*cloud_size + world_center_of_drawing_in_noise_f;
-
-		video::S3DVertex v[4] = {
-			video::S3DVertex(0,0,0, 0,0,0, c_top, 0, 1),
-			video::S3DVertex(0,0,0, 0,0,0, c_top, 1, 1),
-			video::S3DVertex(0,0,0, 0,0,0, c_top, 1, 0),
-			video::S3DVertex(0,0,0, 0,0,0, c_top, 0, 0)
+		bool do_draw[6] = {
+			draw_top,
+			zi > 0 && !grid_point(xi, zi - 1),
+			xi < 0 && !grid_point(xi + 1, zi),
+			zi < 0 && !grid_point(xi, zi + 1),
+			xi > 0 && !grid_point(xi - 1, zi),
+			draw_bottom,
 		};
 
-		/*if(zi <= 0 && xi <= 0){
-			v[0].Color.setBlue(255);
-			v[1].Color.setBlue(255);
-			v[2].Color.setBlue(255);
-			v[3].Color.setBlue(255);
-		}*/
-
-		f32 rx = cloud_size / 2.0f;
-		// if clouds are flat, the top layer should be at the given height
-		f32 ry = m_enable_3d ? m_params.thickness * BS : 0.0f;
-		f32 rz = cloud_size / 2;
-
-		for(int i=0; i<num_faces_to_draw; i++)
-		{
-			switch(i)
-			{
-			case 0:	// top
-				for(int j=0;j<4;j++){
-					v[j].Normal.set(0,1,0);
-				}
-				v[0].Pos.set(-rx, ry,-rz);
-				v[1].Pos.set(-rx, ry, rz);
-				v[2].Pos.set( rx, ry, rz);
-				v[3].Pos.set( rx, ry,-rz);
-				break;
-			case 1: // back
-				if (INAREA(xi, zi - 1, m_cloud_radius_i)) {
-					u32 j = GETINDEX(xi, zi - 1, m_cloud_radius_i);
-					if(grid[j])
-						continue;
-				}
-				for(int j=0;j<4;j++){
-					v[j].Color = c_side_1;
-					v[j].Normal.set(0,0,-1);
-				}
-				v[0].Pos.set(-rx, ry,-rz);
-				v[1].Pos.set( rx, ry,-rz);
-				v[2].Pos.set( rx,  0,-rz);
-				v[3].Pos.set(-rx,  0,-rz);
-				break;
-			case 2: //right
-				if (INAREA(xi + 1, zi, m_cloud_radius_i)) {
-					u32 j = GETINDEX(xi+1, zi, m_cloud_radius_i);
-					if(grid[j])
-						continue;
-				}
-				for(int j=0;j<4;j++){
-					v[j].Color = c_side_2;
-					v[j].Normal.set(1,0,0);
-				}
-				v[0].Pos.set( rx, ry,-rz);
-				v[1].Pos.set( rx, ry, rz);
-				v[2].Pos.set( rx,  0, rz);
-				v[3].Pos.set( rx,  0,-rz);
-				break;
-			case 3: // front
-				if (INAREA(xi, zi + 1, m_cloud_radius_i)) {
-					u32 j = GETINDEX(xi, zi + 1, m_cloud_radius_i);
-					if(grid[j])
-						continue;
-				}
-				for(int j=0;j<4;j++){
-					v[j].Color = c_side_1;
-					v[j].Normal.set(0,0,-1);
-				}
-				v[0].Pos.set( rx, ry, rz);
-				v[1].Pos.set(-rx, ry, rz);
-				v[2].Pos.set(-rx,  0, rz);
-				v[3].Pos.set( rx,  0, rz);
-				break;
-			case 4: // left
-				if (INAREA(xi-1, zi, m_cloud_radius_i)) {
-					u32 j = GETINDEX(xi-1, zi, m_cloud_radius_i);
-					if(grid[j])
-						continue;
-				}
-				for(int j=0;j<4;j++){
-					v[j].Color = c_side_2;
-					v[j].Normal.set(-1,0,0);
-				}
-				v[0].Pos.set(-rx, ry, rz);
-				v[1].Pos.set(-rx, ry,-rz);
-				v[2].Pos.set(-rx,  0,-rz);
-				v[3].Pos.set(-rx,  0, rz);
-				break;
-			case 5: // bottom
-				for(int j=0;j<4;j++){
-					v[j].Color = c_bottom;
-					v[j].Normal.set(0,-1,0);
-				}
-				v[0].Pos.set( rx,  0, rz);
-				v[1].Pos.set(-rx,  0, rz);
-				v[2].Pos.set(-rx,  0,-rz);
-				v[3].Pos.set( rx,  0,-rz);
-				break;
+		v3f const pos = origin + v3f(xi, 0.0f, zi) * cloud_size;
+		for (int i = 0; i < num_faces_to_draw; i++) {
+			if (!do_draw[i])
+				continue;
+			for (int k = 0; k < 4; k++) {
+				pv->Pos = pos + faces[i][k];
+				pv->Normal = normals[i];
+				pv->Color = colors[i];
+				pv->TCoords = tex_coords[k];
+				pv++;
 			}
-
-			v3f pos(p0.X, m_params.height * BS, p0.Y);
-			pos -= intToFloat(m_camera_offset, BS);
-
-			for(u16 i=0; i<4; i++)
-				v[i].Pos += pos;
-			u16 indices[] = {0,1,2,2,3,0};
-			driver->drawVertexPrimitiveList(v, 4, indices, 2,
-					video::EVT_STANDARD, scene::EPT_TRIANGLES, video::EIT_16BIT);
 		}
 	}
+	int vertex_count = pv - buf;
+	int quad_count = vertex_count / 4;
+	driver->drawVertexPrimitiveList(buf, vertex_count, quad_indices.data(), 2 * quad_count,
+			video::EVT_STANDARD, scene::EPT_TRIANGLES, video::EIT_16BIT);
+	free(buf);
 
-	delete[] grid;
-	
 	// Restore fog settings
 	driver->setFog(fog_color, fog_type, fog_start, fog_end, fog_density,
 			fog_pixelfog, fog_rangefog);
