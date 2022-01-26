@@ -108,6 +108,7 @@ void set_default_settings(Settings *settings) {
 	settings->setDefault("keymap_toggle_debug", "KEY_F5");
 	settings->setDefault("keymap_toggle_profiler", "KEY_F6");
 	settings->setDefault("keymap_camera_mode", "KEY_F7");
+	settings->setDefault("keymap_toggle_unlimited_view_range", "KEY_F8");
 	settings->setDefault("keymap_screenshot", "KEY_F12");
 	settings->setDefault("keymap_increase_viewing_range_min", "+");
 	settings->setDefault("keymap_decrease_viewing_range_min", "-");

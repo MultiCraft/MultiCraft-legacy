@@ -40,6 +40,7 @@ struct MapDrawControl
 	}
 	// Overrides limits by drawing everything
 	bool range_all;
+	bool extended_range = false;
 	// Wanted drawing range
 	float wanted_range;
 	// Maximum number of blocks to draw
