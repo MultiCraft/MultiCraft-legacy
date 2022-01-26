@@ -1086,8 +1086,6 @@ void KeyCache::populate()
 			= getKeySetting("keymap_toggle_debug");
 	key[KeyType::TOGGLE_PROFILER]
 			= getKeySetting("keymap_toggle_profiler");
-	key[KeyType::TOGGLE_UNLIMITED_VIEW_RANGE]
-			= getKeySetting("keymap_toggle_unlimited_view_range");
 	key[KeyType::CAMERA_MODE]
 			= getKeySetting("keymap_camera_mode");
 	key[KeyType::INCREASE_VIEWING_RANGE]
@@ -2622,14 +2620,16 @@ void Game::processKeyInput()
 		toggleDebug();
 	} else if (wasKeyDown(KeyType::TOGGLE_PROFILER)) {
 		toggleProfiler();
-	} else if (wasKeyDown(KeyType::TOGGLE_UNLIMITED_VIEW_RANGE)) {
-		toggleFullViewRange();
 	} else if (wasKeyDown(KeyType::INCREASE_VIEWING_RANGE) || wasKeyDown(KeyType::INCREASE_VIEWING_RANGE2)) {
 		increaseViewRange();
 	} else if (wasKeyDown(KeyType::DECREASE_VIEWING_RANGE)) {
 		decreaseViewRange();
 	} else if (wasKeyDown(KeyType::RANGESELECT)) {
+#if defined(__ANDROID__) || defined(__IOS__)
 		toggleExtendedViewRange();
+#else
+		toggleFullViewRange();
+#endif
 	} else if (wasKeyDown(KeyType::QUICKTUNE_NEXT)) {
 		quicktune->next();
 	} else if (wasKeyDown(KeyType::QUICKTUNE_PREV)) {
