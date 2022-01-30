@@ -490,7 +490,7 @@ void Camera::updateViewingRange()
 	f32 viewing_range = g_settings->getFloat("viewing_range");
 	f32 near_plane = g_settings->getFloat("near_plane");
 	if (m_draw_control.extended_range)
-		viewing_range *= 4;
+		viewing_range *= 3;
 	m_draw_control.wanted_range = viewing_range;
 	m_cameranode->setNearValue(rangelim(near_plane, 0.0f, 0.5f) * BS);
 	m_cameranode->setFarValue(m_draw_control.range_all ? 100000.0 : std::max(2000.0f, viewing_range) * BS);
